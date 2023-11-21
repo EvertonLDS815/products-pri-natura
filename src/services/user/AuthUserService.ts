@@ -15,8 +15,6 @@ class AuthUserService {
             }
         })
 
-        console.log(user)
-
         if (!user) {
             throw new Error("User/Password incorrect!");
         }
