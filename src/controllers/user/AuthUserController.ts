@@ -14,7 +14,7 @@ class AuthUserController {
             })
 
         return res.json(auth);
-        } catch (err: any) {
+        } catch (err) {
             return res.status(500).json({
                 error: err.message
             })

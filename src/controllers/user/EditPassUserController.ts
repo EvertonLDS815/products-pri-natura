@@ -6,15 +6,16 @@ class EditPassUserController {
         try {
             const {password, newPassword} = req.body;
             const {user_id} = req;
+            
             const editPassUserController = new EditPassUserService();
 
-            const user = await editPassUserController.execute({
-                user_id: user_id,
-                password: password,
-                newPassword: newPassword,
+            await editPassUserController.execute({
+                user_id,
+                password,
+                newPassword,
             });
 
-            return res.json(user);
+            return res.sendStatus(204);
         } catch (err) {
             return res.status(401).json({
                 error: err.message
