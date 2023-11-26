@@ -7,11 +7,11 @@ class RemoveItemController {
 
         const removeItemService = new RemoveItemService();
 
-        const order = await removeItemService.execute({
+        await removeItemService.execute({
             item_id
         });
 
-        return res.status(200).json(order);
+        return res.status(204);
     }
 }
 
