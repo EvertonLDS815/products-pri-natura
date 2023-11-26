@@ -8,8 +8,9 @@ import {EditPassUserController} from './controllers/user/EditPassUserController'
 import {CreateCategoryController} from './controllers/category/CreateCategoryController';
 import {ListCategoryController} from './controllers/category/ListCategoryController';
 import {CreateProductController} from './controllers/product/CreateProductController';
-import { ListByCategoryController } from './controllers/product/ListByCategoryController';
+import {ListByCategoryController} from './controllers/product/ListByCategoryController';
 import {CreateOrderController} from './controllers/order/CreateOrderController';
+import {RemoveOrderController} from './controllers/order/RemoveOrderController';
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
@@ -35,5 +36,6 @@ router.get('/category/product', new ListByCategoryController().handle)
 
 // Rotas Orders
 router.post('/order', new CreateOrderController().handle)
+router.delete('/order', isAuthenticated, new RemoveOrderController().handle)
 
 export {router};
