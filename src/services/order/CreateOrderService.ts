@@ -4,7 +4,7 @@ interface OrderRequest {
     name: string;
     neighborhood: string;
     adress: string;
-    house_number: number;
+    house_number: string;
 }
 class CreateOrderService {
     async execute({name, neighborhood, adress, house_number}: OrderRequest) {

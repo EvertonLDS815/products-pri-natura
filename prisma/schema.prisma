@@ -53,7 +53,7 @@ model Order {
   name String
   neighborhood String
   adress String
-  house_number Int
+  house_number Decimal @db.Decimal(8, 2)
   status Boolean @default(false)
   draft Boolean @default(true)
 

@@ -16,7 +16,7 @@ class CreateOrderController {
             name,
             neighborhood,
             adress,
-            house_number: Number(house_number)
+            house_number
         })
 
         return res.status(201).json(order);
