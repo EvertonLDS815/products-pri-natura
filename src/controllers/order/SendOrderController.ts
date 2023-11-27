@@ -15,4 +15,4 @@ class SendOrderController {
     }
 }
 
-export { SendOrderController }
+export { SendOrderController };

@@ -18,4 +18,4 @@ class SendOrderService {
     }
 }
 
-export { SendOrderService }
+export { SendOrderService };
