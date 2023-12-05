@@ -9,18 +9,13 @@ export function isAuthenticated(
     res: Response,
     next: NextFunction
 ) {
-    console.log(req.headers)
     const authToken = req.headers.authorization;
-
-    console.log(authToken)
 
     if (!authToken) {
         return res.status(401).end();
     }
 
     const [, token] = authToken.split(" ");
-
-    console.log(token);
 
     try {
         // Validar esse token
