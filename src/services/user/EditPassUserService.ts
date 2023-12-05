@@ -36,8 +36,6 @@ class EditPassUserService {
             },
           });
 
-          console.log(editUser);
-
 
         return editUser;
     }

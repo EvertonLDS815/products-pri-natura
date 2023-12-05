@@ -9,14 +9,18 @@ export function isAuthenticated(
     res: Response,
     next: NextFunction
 ) {
-    
+    console.log(req.headers)
     const authToken = req.headers.authorization;
 
+    console.log(authToken)
+
     if (!authToken) {
-        res.status(401).end();
+        return res.status(401).end();
     }
 
     const [, token] = authToken.split(" ");
+
+    console.log(token);
 
     try {
         // Validar esse token
@@ -31,6 +35,8 @@ export function isAuthenticated(
 
         return next();
     } catch (err) {
-        return res.status(401).end();
+        return res.status(401).json({
+            error: err.message
+        });
     }
 }
