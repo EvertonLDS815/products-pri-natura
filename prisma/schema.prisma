@@ -21,6 +21,16 @@ model User {
 
   @@map("users")
 }
+model Client {
+  id String @id @default(uuid())
+  name String
+  login String
+  password String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("clients")
+}
 
 model Category {
   id String @id @default(uuid())

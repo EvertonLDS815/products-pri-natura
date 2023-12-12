@@ -5,6 +5,10 @@ import {CreateUserController} from './controllers/user/CreateUserController';
 import {AuthUserController} from './controllers/user/AuthUserController';
 import {DetailUserController} from './controllers/user/DetailUserController'
 import {EditPassUserController} from './controllers/user/EditPassUserController';
+import {CreateClientController} from './controllers/clientts/CreateClientController';
+import {AuthClientController} from './controllers/clientts/AuthClientController';
+import {DetailClientController} from './controllers/clientts/DetailClientController'
+import {EditPassClientController} from './controllers/clientts/EditPassClientController';
 import {CreateCategoryController} from './controllers/category/CreateCategoryController';
 import {ListCategoryController} from './controllers/category/ListCategoryController';
 import {CreateProductController} from './controllers/product/CreateProductController';
@@ -31,6 +35,10 @@ router.post('/users', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticated, new DetailUserController().handle);
 router.patch('/edit', isAuthenticated, new EditPassUserController().handle);
+router.post('/client', new CreateClientController().handle);
+router.post('/session/client', new AuthClientController().handle);
+router.get('/me/client', isAuthenticated, new DetailClientController().handle);
+router.patch('/edit/client', isAuthenticated, new EditPassClientController().handle);
 
 // Rotas Categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
@@ -41,13 +49,13 @@ router.post('/product', isAuthenticated, upload.single('file'), new CreateProduc
 router.get('/category/product', new ListByCategoryController().handle);
 
 // Rotas Orders
-router.post('/order', new CreateOrderController().handle);
+router.post('/order', isAuthenticated, new CreateOrderController().handle);
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle);
-router.post('/order/add', new AddItemController().handle);
-router.delete('/order/remove', new RemoveItemController().handle);
-router.patch('/order/send', new SendOrderController().handle);
+router.post('/order/add', isAuthenticated, new AddItemController().handle);
+router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle);
+router.patch('/order/send', isAuthenticated, new SendOrderController().handle);
 router.get('/orders', isAuthenticated, new ListOrdersController().handle);
 router.get('/order/detail', isAuthenticated, new DetailOrderController().handle);
-router.patch('/order/finish', new FinishOrderController().handle);
+router.patch('/order/finish', isAuthenticated, new FinishOrderController().handle);
 
 export {router};
