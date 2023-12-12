@@ -11,7 +11,10 @@ class CreateUserService {
     async execute({name, email, password}: CreateUserProps) {
 
         if (!email) {
-            throw new Error("Email incorrect");
+            throw new Error("Email incorreto");
+        }
+        if (password.length < 5) {
+            throw new Error('Senha deve conter mais de 4 caracteres!');
         }
 
         const userAlreadyExists = await prismaClient.user.findFirst({

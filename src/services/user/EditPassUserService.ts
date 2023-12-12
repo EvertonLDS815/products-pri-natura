@@ -14,15 +14,19 @@ class EditPassUserService {
                 id: user_id
             }
         });
-
+        
         if (password === '' || newPassword === '') {
-            throw new Error('Password and/or newPassword invalid!');
+            throw new Error('Preenha todos os campos!');
+        }
+
+        if (newPassword.length < 5) {
+            throw new Error('Nova Senha deve conter mais de 4 caracteres!');
         }
 
         const passwordMatch = await compare(password, user.password);
 
         if (!passwordMatch) {
-            throw new Error('Password invalid!');
+            throw new Error('Senha incorreta!');
         }
 
         const passwordHash = await hash(newPassword, 8);
