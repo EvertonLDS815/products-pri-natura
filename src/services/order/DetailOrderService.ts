@@ -11,7 +11,11 @@ class DetailOrderService {
             },
             include: {
                 product: true,
-                order: true
+                order: {
+                    include: {
+                        client: true
+                    }
+                },
             }
         });
 

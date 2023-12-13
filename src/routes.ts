@@ -9,6 +9,8 @@ import {CreateClientController} from './controllers/clientts/CreateClientControl
 import {AuthClientController} from './controllers/clientts/AuthClientController';
 import {DetailClientController} from './controllers/clientts/DetailClientController'
 import {EditPassClientController} from './controllers/clientts/EditPassClientController';
+import { ListOrdersCliController } from './controllers/clientts/ListOrdersCliController';
+
 import {CreateCategoryController} from './controllers/category/CreateCategoryController';
 import {ListCategoryController} from './controllers/category/ListCategoryController';
 import {CreateProductController} from './controllers/product/CreateProductController';
@@ -39,6 +41,7 @@ router.post('/client', new CreateClientController().handle);
 router.post('/session/client', new AuthClientController().handle);
 router.get('/me/client', isAuthenticated, new DetailClientController().handle);
 router.patch('/edit/client', isAuthenticated, new EditPassClientController().handle);
+router.get('/order/client', isAuthenticated, new ListOrdersCliController().handle)
 
 // Rotas Categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);

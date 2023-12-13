@@ -30,6 +30,8 @@ model Client {
   updated_at DateTime? @default(now())
 
   @@map("clients")
+  
+  orders Order[]
 }
 
 model Category {
@@ -60,17 +62,19 @@ model Product {
 
 model Order {
   id String @id @default(uuid())
-  name String
   neighborhood String
   adress String
   house_number Decimal @db.Decimal(8, 2)
   status Boolean @default(false)
   draft Boolean @default(true)
 
+  client Client @relation(fields: [client_id], references: [id])
+
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
   @@map("orders")
+  client_id String
   items Item[]
 }
 

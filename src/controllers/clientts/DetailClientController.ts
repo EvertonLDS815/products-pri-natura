@@ -8,9 +8,9 @@ class DetailClientController {
 
         const detailClientService = new DetailClientService();
 
-        const user = await detailClientService.execute(user_id);
+        const client = await detailClientService.execute(user_id);
 
-        return res.status(200).json(user);
+        return res.status(200).json(client);
     }
 }
 

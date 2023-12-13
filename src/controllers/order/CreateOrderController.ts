@@ -4,19 +4,20 @@ import {CreateOrderService} from '../../services/order/CreateOrderService';
 class CreateOrderController {
     async handle(req: Request, res: Response) {
         const {
-            name,
             neighborhood,
             adress,
             house_number,
         } = req.body;
 
+        const {user_id} = req;
+
         const createOrderService = new CreateOrderService();
 
         const order = await createOrderService.execute({
-            name,
             neighborhood,
             adress,
-            house_number
+            house_number,
+            client_id: user_id
         })
 
         return res.status(201).json(order);

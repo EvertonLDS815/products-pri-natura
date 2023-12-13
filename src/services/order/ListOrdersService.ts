@@ -7,6 +7,9 @@ class ListOrdersService {
                 draft: false,
                 status: false
             },
+            include: {
+                client: true
+            },
             orderBy: {
                 created_at: 'asc'
             }
