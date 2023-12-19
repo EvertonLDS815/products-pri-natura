@@ -21,6 +21,9 @@ class CreateOrderService {
                 adress,
                 house_number,
                 client_id: client_id
+            },
+            include: {
+                client: true
             }
         });
 
