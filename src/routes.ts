@@ -26,6 +26,7 @@ import {FinishOrderController} from './controllers/order/FinishOrderController';
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
 import uploadConfig from './config/multer';
+import { ListOrderLastController } from './controllers/clientts/ListOrderLastController';
 
 const router = Router();
 
@@ -36,13 +37,14 @@ router.post('/users', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticated, new DetailUserController().handle);
 router.patch('/edit', isAuthenticated, new EditPassUserController().handle);
-router.post('/client', new CreateClientController().handle);
 
 // Rotas Client
+router.post('/client', new CreateClientController().handle);
 router.post('/session/client', new AuthClientController().handle);
 router.get('/me/client', isAuthenticated, new DetailClientController().handle);
 router.patch('/edit/client', isAuthenticated, new EditPassClientController().handle);
 router.get('/order/client', isAuthenticated, new ListOrdersCliController().handle)
+router.get('/order/item', isAuthenticated, new ListOrderLastController().handle)
 
 // Rotas Categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);

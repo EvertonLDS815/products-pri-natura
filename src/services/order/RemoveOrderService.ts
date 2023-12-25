@@ -9,7 +9,6 @@ class RemoveOrderService {
             where: {
                 order: {
                     id: order_id,
-                    draft: true
                 },
             }
         });
