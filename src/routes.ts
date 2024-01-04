@@ -14,6 +14,7 @@ import {CreateCategoryController} from './controllers/category/CreateCategoryCon
 import {ListCategoryController} from './controllers/category/ListCategoryController';
 import {CreateProductController} from './controllers/product/CreateProductController';
 import {ListByCategoryController} from './controllers/product/ListByCategoryController';
+import {GetOrderController } from './controllers/order/GetOrderController';
 import {CreateOrderController} from './controllers/order/CreateOrderController';
 import {RemoveOrderController} from './controllers/order/RemoveOrderController';
 import {AddItemController} from './controllers/order/AddItemController';
@@ -22,7 +23,7 @@ import {SendOrderController} from './controllers/order/SendOrderController';
 import {ListOrdersController} from './controllers/order/ListOrdersController';
 import {DetailOrderController} from './controllers/order/DetailOrderController';
 import {FinishOrderController} from './controllers/order/FinishOrderController';
-
+import {ListOrderItemController} from './controllers/clientts/ListOrderItemController';
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
 import uploadConfig from './config/multer';
@@ -43,8 +44,10 @@ router.post('/client', new CreateClientController().handle);
 router.post('/session/client', new AuthClientController().handle);
 router.get('/me/client', isAuthenticated, new DetailClientController().handle);
 router.patch('/edit/client', isAuthenticated, new EditPassClientController().handle);
-router.get('/order/client', isAuthenticated, new ListOrdersCliController().handle)
+router.post('/order/client', isAuthenticated, new ListOrdersCliController().handle)
 router.get('/order/item', isAuthenticated, new ListOrderLastController().handle)
+router.post('/list/item', isAuthenticated, new ListOrderItemController().handle)
+router.post('/get/order', isAuthenticated, new GetOrderController().handle)
 
 // Rotas Categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);

@@ -4,11 +4,12 @@ import {ListOrdersCliService} from '../../services/clientts/ListOrdersCliService
 class ListOrdersCliController {
     async handle(req: Request, res: Response) {
         try {
-            const {user_id} = req;
-    
+            const {client_id} = req.body;
             const listOrdersSerivice = new ListOrdersCliService();
-    
-            const orders = await listOrdersSerivice.execute(user_id);
+            
+            const orders = await listOrdersSerivice.execute({
+                client_id
+            });
     
             return res.status(200).json(orders);
         } catch (err) {

@@ -5,7 +5,7 @@ interface OrderRequest {
 }
 class SendOrderService {
     async execute({order_id}: OrderRequest) {
-        const order = prismaClient.order.update({
+        const order = await prismaClient.order.update({
             where: {
                 id: order_id
             },

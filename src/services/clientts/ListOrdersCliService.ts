@@ -1,25 +1,21 @@
 import prismaClient from '../../prisma';
 
+interface ClientProps {
+    client_id: string
+}
 class ListOrdersCliService {
-    async execute(user_id: string) {
-        const orders = await prismaClient.item.findMany({
-            where: {
-                order: {
+    async execute({client_id}: ClientProps) {
+        const orders = await prismaClient.order.findMany({
+                where: {
                     draft: true,
-                    client_id: user_id
-                }
-            },
-            orderBy: {
-                created_at: 'asc'
-            },
-            include: {
-                order: {
-                    include: {
-                        client: true
-                    }
+                    client_id: client_id,
+                    },
+                orderBy: {
+                    created_at: 'asc'
                 },
-                product: true
-            }
+                include: {
+                    client: true
+                }
         });
         return orders;
     }

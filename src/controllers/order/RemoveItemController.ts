@@ -12,7 +12,7 @@ class RemoveItemController {
                 item_id
             });
     
-            return res.status(204);
+            return res.sendStatus(204);
         } catch (err) {
             console.log(err)
         }
