@@ -9,12 +9,11 @@ import {CreateClientController} from './controllers/clientts/CreateClientControl
 import {AuthClientController} from './controllers/clientts/AuthClientController';
 import {DetailClientController} from './controllers/clientts/DetailClientController'
 import {EditPassClientController} from './controllers/clientts/EditPassClientController';
-import { ListOrdersCliController } from './controllers/clientts/ListOrdersCliController';
+import {ListOrdersCliController} from './controllers/clientts/ListOrdersCliController';
 import {CreateCategoryController} from './controllers/category/CreateCategoryController';
 import {ListCategoryController} from './controllers/category/ListCategoryController';
 import {CreateProductController} from './controllers/product/CreateProductController';
 import {ListByCategoryController} from './controllers/product/ListByCategoryController';
-import {GetOrderController } from './controllers/order/GetOrderController';
 import {CreateOrderController} from './controllers/order/CreateOrderController';
 import {RemoveOrderController} from './controllers/order/RemoveOrderController';
 import {AddItemController} from './controllers/order/AddItemController';
@@ -23,8 +22,8 @@ import {SendOrderController} from './controllers/order/SendOrderController';
 import {ListOrdersController} from './controllers/order/ListOrdersController';
 import {DetailOrderController} from './controllers/order/DetailOrderController';
 import {FinishOrderController} from './controllers/order/FinishOrderController';
-import {ListOrderItemController} from './controllers/clientts/ListOrderItemController';
-import { isAuthenticated } from './middlewares/isAuthenticated';
+import {isAuthenticated} from './middlewares/isAuthenticated';
+import {ListOrdersSendController} from './controllers/order/ListOrdersSendController';
 
 import uploadConfig from './config/multer';
 import { ListOrderLastController } from './controllers/clientts/ListOrderLastController';
@@ -46,8 +45,6 @@ router.get('/me/client', isAuthenticated, new DetailClientController().handle);
 router.patch('/edit/client', isAuthenticated, new EditPassClientController().handle);
 router.post('/order/client', isAuthenticated, new ListOrdersCliController().handle)
 router.get('/order/item', isAuthenticated, new ListOrderLastController().handle)
-router.post('/list/item', isAuthenticated, new ListOrderItemController().handle)
-router.post('/get/order', isAuthenticated, new GetOrderController().handle)
 
 // Rotas Categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
@@ -66,5 +63,6 @@ router.patch('/order/send', isAuthenticated, new SendOrderController().handle);
 router.get('/orders', isAuthenticated, new ListOrdersController().handle);
 router.get('/order/detail', isAuthenticated, new DetailOrderController().handle);
 router.patch('/order/finish', isAuthenticated, new FinishOrderController().handle);
+router.post('/orderclient/send', isAuthenticated, new ListOrdersSendController().handle);
 
 export {router};

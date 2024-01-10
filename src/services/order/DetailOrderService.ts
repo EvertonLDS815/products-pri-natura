@@ -18,7 +18,6 @@ class DetailOrderService {
                 },
             }
         });
-
         return orders;
     }
 }
